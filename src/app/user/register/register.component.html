@@ -1,0 +1,104 @@
+<div class="modal-backdrop">
+  <div class="modal-dialog text-center" tabindex="-1">
+    <div class="col-sm-9 main-section">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="col-12 user-img">
+            <img
+              src="https://thumbs.dreamstime.com/z/formal-man-avatar-icon-formal-man-avatar-icon-available-your-designs-131686806.jpg">
+          </div>
+          <div class="col-12 form-input">
+            <form class="form-control1" *ngIf="!isSuccessful" name="form"
+                  (ngSubmit)="f.form.valid && ch.value==password.value && onSubmit()" #f="ngForm" novalidate>
+              <div class="form-group">
+                <i class="fa fa-user searchIcon1"></i>
+                <input type="text" class="form-control" name="username"
+                       [(ngModel)]="form.username" required minlength="3" maxlength="20" #username="ngModel"
+                       placeholder="Nhập tên tài khoản">
+                <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+                  <div *ngIf="username.errors.required">Tài khoản không được để trống</div>
+                  <div *ngIf="username.errors.minlength">
+                    Tài khoản tối thiêu 3 ký tự
+                  </div>
+                  <div *ngIf="username.errors.maxlength">
+                    Tài khoản tối đa 20 ký tự
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <i class="fa fa-envelope searchIcon2"></i>
+                <input type="email" class="form-control" name="email"
+                       #email="ngModel" [(ngModel)]="form.email" email pattern="[^@]+@[^\.]+\..+" required
+                       placeholder="Nhập email của bạn">
+                <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                  <div *ngIf="email.errors.required">Email không được để trống</div>
+                  <div *ngIf="email.errors.email">
+                    Định dạng email không đúng
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <i class="fa fa-unlock-alt searchIcon3"></i>
+                <input type="password" class="form-control" name="password"
+                       [(ngModel)]="form.password" required minlength="6" #password="ngModel"
+                       placeholder="Nhập mật khẩu">
+                <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+                  <div *ngIf="password.errors.required">Mật khẩu không được để trống</div>
+                  <div *ngIf="password.errors.minlength">
+                    Mật khẩu tối thiểu 6 ký tự
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <i class="fa fa-unlock-alt searchIcon4"></i>
+                <input type="password" class="form-control" required #ch
+                       placeholder="Nhập lại mật khẩu">
+                <div class="alert-danger" *ngIf="ch.value !='' && ch.value!= password.value">
+                  Mật khẩu không khớp
+                </div>
+              </div>
+
+              <div class="form-group">
+                <i class="fa fa-phone searchIcon5"></i>
+                <input type="text" class="form-control" name="phone"
+                       #phone="ngModel" [(ngModel)]="form.phone" pattern="(09|03)+([0-9]{8})\b"
+                       placeholder="Nhập số điện thoại">
+                <div class="alert-danger" *ngIf="f.submitted && phone.invalid">
+                  <div>
+                    Định dạng số điện thoại không đúng
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <i class="fa fa-map-marker searchIcon6"></i>
+                <input type="text" class="form-control" name="address"
+                       [(ngModel)]="form.address" required minlength="3" #address="ngModel"
+                       placeholder="Nhập địa chỉ của bạn">
+                <div class="alert-danger" *ngIf="f.submitted && address.invalid">
+                  <div *ngIf="address.errors.required">Không được để trống</div>
+                  <div *ngIf="address.errors.minlength(3)">
+                    Tối thiểu 3 ký tự
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success">Đăng ký</button>
+              <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                Đăng ký thất bại!<br/>{{ errorMessage }}
+              </div>
+            </form>
+            <div class="alert alert-success" *ngIf="isSuccessful">
+              Đăng ký thành công!
+            </div>
+          </div>
+          <div class="col-12 forgot">
+            <a routerLink="/login">Đăng nhập</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

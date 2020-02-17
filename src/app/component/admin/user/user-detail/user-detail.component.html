@@ -1,0 +1,25 @@
+<h2>Chi tiết thành viên</h2>
+<div class="col-6 offset-3" *ngIf="user">
+
+  <table class="table">
+    <tr>
+      <td>Tên:</td>
+      <td>{{user.username}}</td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>{{user.email}}</td>
+    </tr>
+
+    <tr>
+      <td>Điện thoại:</td>
+      <td>{{user.phone}}</td>
+    </tr>
+
+    <tr>
+      <td>Địa chỉ:</td>
+      <td>{{user.address}}</td>
+    </tr>
+  </table>
+  <input class="btn btn-primary btn-block" routerLink="/user-list" value="Quay lại">
+</div>

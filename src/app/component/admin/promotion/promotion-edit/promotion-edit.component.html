@@ -1,0 +1,39 @@
+<div class="col-6 offset-3">
+  <div *ngIf="message">
+    <div class="alert alert-success">
+      <strong>Success!</strong> You have editted a promotion
+    </div>
+    <div class="form-group">
+      <input class="btn btn-primary btn-block" value="Back to promotion list" routerLink="/promotion-list">
+    </div>
+  </div>
+  <form
+    *ngIf="!message"
+    name="form"
+    [formGroup]="promotionForm"
+    (ngSubmit)="promotionForm.valid && onSubmit()"
+  >
+    <div class="form-group">
+      <label>Tên</label>
+      <input type="text" class="form-control" formControlName="name">
+      <div class="alert-danger" *ngIf="promotionForm.get('name').invalid && promotionForm.get('name').touched"
+           style="color: red">
+        Tối thiểu 3 ký tự
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Giá</label>
+      <input type="number" class="form-control" formControlName="price">
+      <div class="alert-danger" *ngIf="promotionForm.get('price').invalid && promotionForm.get('price').touched"
+           style="color: red">
+        Không được để trống
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Cập nhật</button>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Quay lại</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,51 @@
+<div class="col-6 offset-3">
+  <div *ngIf="message">
+    <div class="alert alert-success">
+      <strong>Success!</strong> You have edit user
+    </div>
+    <div>
+      <div class="form-group">
+        <input class="btn btn-primary btn-block" value="Back to user list" routerLink="/user-list">
+      </div>
+    </div>
+  </div>
+  <form *ngIf="!message" name="form" [formGroup]="userForm" (ngSubmit)="userForm.valid && onSubmit()" novalidate>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" class="form-control" formControlName="username"/>
+      <div class="alert-danger" *ngIf="userForm.get('username').invalid && userForm.get('username').touched" style="color: aqua">
+        Tối thiểu 3 ký tự
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" class="form-control" formControlName="email"/>
+      <div class="alert-danger" *ngIf="userForm.get('email').invalid && userForm.get('email').touched" style="color: aqua">
+        Không đúng định dạng email
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Điện thoại</label>
+      <input type="text" class="form-control" formControlName="phone"/>
+      <div class="alert-danger" *ngIf="userForm.get('phone').invalid && userForm.get('phone').touched" style="color: aqua">
+        Không đúng định dạng điện thoại
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Địa chỉ</label>
+      <input type="text" class="form-control" formControlName="address"/>
+      <div class="alert-danger" *ngIf="userForm.get('address').invalid && userForm.get('address').touched" style="color: aqua">
+        Tối thiểu 3 ký tự
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Save</button>
+    </div><div class="form-group">
+    <input class="btn btn-primary btn-block" value="Cancel" href="localhost:4200/user-list">
+  </div>
+  </form>
+</div>

@@ -1,0 +1,40 @@
+<h2>Xóa chi tiết đơn hàng</h2>
+<div class="col-6 offset-3" *ngIf="orderDetail">
+  <table class="table">
+    <tr>
+      <td>Giá:</td>
+      <td>{{ orderDetail.salePrice }}</td>
+    </tr>
+
+    <tr>
+      <td>Số lượng:</td>
+      <td>{{ orderDetail.quantity }}</td>
+    </tr>
+
+  </table>
+  <input class="btn btn-primary btn-block" value="Delete order detail" data-toggle="modal" data-target="#exampleModal">
+  <input class="btn btn-primary btn-block" value="Back to order detail list" routerLink="/orderDetail-list">
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Little Bean </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Bạn có chắc chắn muốn xóa không?
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-dismiss="modal" type="button">Quay lại</button>
+          <button (click)="deleteOrderDetail(orderDetail.id)" class="btn btn-primary" data-dismiss="modal"
+                  type="button">Xóa
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
